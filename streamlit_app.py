@@ -21,8 +21,8 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 ingredients_list = st.multiselect('Choose up to 5 ingredients:', my_dataframe, max_selections=5)
 
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response.json())
-
+#st.text(smoothiefroot_response.json(), use_container_width=True)
+sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
 if ingredients_list:
     ingredients_string = ''
